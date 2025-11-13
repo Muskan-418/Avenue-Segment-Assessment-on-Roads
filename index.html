@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Avenue Segment Assessment Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin=""></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>Avenue Segment Assessment</h1>
+    <div class="controls">
+      <select id="filter-condition">
+        <option value="ALL">Show All Conditions</option>
+        <option value="Excellent">Excellent</option>
+        <option value="Good">Good</option>
+        <option value="Fair">Fair</option>
+        <option value="Poor">Poor</option>
+        <option value="Critical">Critical</option>
+      </select>
+      <button id="refresh-btn">Refresh</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>Summary</h2>
+        <canvas id="summaryChart" height="160"></canvas>
+      </section>
+
+      <section class="panel">
+        <h2>Segments</h2>
+        <div id="segment-list" class="list"></div>
+      </section>
+
+      <section class="panel small">
+        <h3>Legend</h3>
+        <div class="legend">
+          <div><span class="dot" style="background:#2ecc71"></span> Excellent</div>
+          <div><span class="dot" style="background:#27ae60"></span> Good</div>
+          <div><span class="dot" style="background:#f1c40f"></span> Fair</div>
+          <div><span class="dot" style="background:#e67e22"></span> Poor</div>
+          <div><span class="dot" style="background:#e74c3c"></span> Critical</div>
+        </div>
+      </section>
+    </aside>
+
+    <section class="map-wrap">
+      <div id="map" class="map"></div>
+      <div id="segment-details" class="details hidden">
+        <button id="close-details" class="close">×</button>
+        <h3 id="detail-title">Segment</h3>
+        <p><strong>RCI:</strong> <span id="detail-rci"></span></p>
+        <p><strong>Condition:</strong> <span id="detail-condition"></span></p>
+        <p><strong>Potholes:</strong> <span id="detail-potholes"></span></p>
+        <p><strong>Crack Density:</strong> <span id="detail-cracks"></span></p>
+        <p><strong>Last Inspected:</strong> <span id="detail-date"></span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>Avenue Segment Assessment • Prototype dashboard</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
